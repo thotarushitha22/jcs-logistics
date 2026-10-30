@@ -1,0 +1,136 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
+#root { width: 100%; margin: 0; padding: 0; max-width: 100%; text-align: left; }
+body { background-color: #f8fafc; }
+
+/* =========================================
+   LAYOUT
+========================================= */
+.dp-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
+}
+
+/* =========================================
+   HEADER (Cleaned up, no search bar)
+========================================= */
+.dp-header {
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  width: 100%;
+}
+
+.dp-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; }
+.dp-logo { width: 40px; height: 40px; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+
+/* =========================================
+   MAIN & STATS
+========================================= */
+.dp-main { padding: 32px; width: 100%; flex: 1; }
+
+.dp-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-bottom: 24px; }
+.dp-stat-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; display: flex; align-items: center; gap: 16px; }
+.dp-stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.dp-stat-card p { margin: 0; font-size: 13px; font-weight: 600; color: #64748b; text-transform: uppercase; }
+.dp-stat-card h3 { margin: 4px 0 0 0; font-size: 28px; font-weight: 800; }
+
+/* =========================================
+   CARDS GRID
+========================================= */
+.dp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; width: 100%; }
+
+.dp-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+}
+
+.dp-card-header { display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 16px; margin-bottom: 16px; }
+.dp-card-header h4 { margin: 0 0 4px 0; font-size: 16px; font-weight: 700; }
+.dp-card-header p { margin: 0; color: #64748b; font-size: 13px; }
+
+/* =========================================
+   ITEMS
+========================================= */
+.dp-items-box { margin: 0 0 16px 0; background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0; }
+.dp-items-title { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; font-size: 12px; font-weight: 700; color: #475569; text-transform: uppercase; }
+.dp-item-row { display: flex; align-items: center; gap: 12px; font-size: 13px; margin-bottom: 12px; padding-bottom: 12px; }
+.dp-item-row:last-child { border-bottom: none !important; margin-bottom: 0; padding-bottom: 0; }
+.dp-item-image { width: 40px; height: 40px; border-radius: 6px; background: #e2e8f0; overflow: hidden; flex-shrink: 0; }
+.dp-item-image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* =========================================
+   TIMELINE (Fills space)
+========================================= */
+.dp-timeline {
+  flex: 1; /* This is the magic line that fills the empty space */
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 16px 0;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.dp-timeline-step { display: flex; gap: 12px; position: relative; margin-bottom: 16px; }
+.dp-timeline-step:last-child { margin-bottom: 0; }
+.dp-timeline-step:not(:last-child)::before { content: ""; position: absolute; left: 11px; top: 20px; bottom: -16px; width: 2px; background: #e2e8f0; z-index: 1; }
+.dp-timeline-step.completed:not(:last-child)::before { background: #16a34a; }
+
+.dp-timeline-dot { width: 24px; height: 24px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; z-index: 2; flex-shrink: 0; color: #64748b; }
+.dp-timeline-step.active .dp-timeline-dot { background: #2563eb; color: white; box-shadow: 0 0 0 4px #dbeafe; }
+.dp-timeline-step.completed .dp-timeline-dot { background: #16a34a; color: white; }
+
+.dot-inner { width: 8px; height: 8px; border-radius: 50%; background: #cbd5e1; }
+.dp-timeline-step.active .dot-inner { background: white; }
+
+.dp-timeline-content { display: flex; flex-direction: column; margin-top: 2px; }
+.dp-timeline-content strong { font-size: 13px; color: #0f172a; }
+.dp-timeline-content span { font-size: 11px; color: #64748b; }
+
+/* =========================================
+   FOOTER & FORMS
+========================================= */
+.dp-card-footer { margin-top: auto; }
+
+.dp-label { font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 6px; display: block; }
+
+.dp-select-wrapper { position: relative; width: 100%; }
+.dp-select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: #ffffff;
+  color: #0f172a;
+  appearance: none;
+  cursor: pointer;
+}
+.dp-select:focus, .dp-input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+.dp-select-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #64748b; pointer-events: none; }
+.dp-input { width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; font-family: inherit; outline: none; background: #ffffff; }
+
+.dp-badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; height: fit-content; text-transform: uppercase; }
+.dp-btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: 600; font-size: 14px; display: flex; justify-content: center; align-items: center; gap: 8px; cursor: pointer; transition: opacity 0.2s; margin-top: 8px; }
+.dp-btn:hover:not(:disabled) { opacity: 0.85; }
+.dp-btn.primary { background: #2563eb; color: white; }
+
+.dp-success-box { margin-top: 8px; padding: 16px; background: #f0fdf4; border-radius: 8px; border: 1px solid #16a34a; display: flex; align-items: center; gap: 12px; }

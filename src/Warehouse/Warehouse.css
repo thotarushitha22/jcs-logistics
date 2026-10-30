@@ -1,0 +1,244 @@
+/* =========================================
+   GLOBAL RESET
+========================================= */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 100%; 
+  text-align: left; 
+}
+
+body {
+  background-color: #f8fafc;
+}
+
+/* =========================================
+   LAYOUT
+========================================= */
+.wh-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+.wh-header {
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  width: 100%;
+}
+
+.wh-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.wh-logo {
+  width: 40px;
+  height: 40px;
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+.wh-main {
+  padding: 32px;
+  width: 100%;
+  flex: 1;
+}
+
+/* =========================================
+   TABS
+========================================= */
+.wh-tabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.wh-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.wh-tab:hover {
+  color: #f59e0b;
+}
+
+.wh-tab.active {
+  color: #f59e0b;
+  border-bottom-color: #f59e0b;
+}
+
+/* =========================================
+   STATS GRID
+========================================= */
+.wh-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.wh-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.wh-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wh-stat-card p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.wh-stat-card h3 {
+  margin: 4px 0 0 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* =========================================
+   DATA CARDS GRID (Fills full width)
+========================================= */
+.wh-grid {
+  display: grid;
+  /* Reduced from 340px to 280px so it fits more cards across the screen */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.wh-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wh-card-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.wh-card-header h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.wh-card-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =========================================
+   BADGES & BUTTONS
+========================================= */
+.wh-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  height: fit-content;
+  text-transform: uppercase;
+}
+
+.wh-badge.instock { background: #dcfce7; color: #16a34a; }
+.wh-badge.low { background: #fef3c7; color: #b45309; }
+.wh-badge.dispatch { background: #dbeafe; color: #1d4ed8; }
+.wh-badge.out { background: #fef2f2; color: #dc2626; }
+
+.wh-card-actions {
+  margin-top: auto;
+}
+
+.wh-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: opacity 0.2s;
+}
+
+.wh-btn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.wh-btn.primary { background: #f59e0b; color: white; }
+.wh-btn.success { background: #f0fdf4; color: #16a34a; border: 1px solid #16a34a; cursor: not-allowed; }
