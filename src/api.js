@@ -14,14 +14,8 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    let token = localStorage.getItem("token");
-
-    // FORCE THE MERCHANT TOKEN FOR CLOUDFLARE
-    if (!token) {
-      // Paste the NEW Merchant token here
-      token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjAsImVtYWlsIjoiMjIxQGdtYWlsLmNvbSIsInJvbGUiOiJtZXJjaGFudCIsImlhdCI6MTc5MzM0MTMzMCwiZXhwIjoxNzk1OTMzMzMwfQ.nFMbIlgswaM5_eX1rLub4zVseeEGq7B82LmjwCUpZ90"; 
-    }
-
+    // Only use the token saved in localStorage
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

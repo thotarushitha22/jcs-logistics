@@ -11,37 +11,28 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // Note: if loginUser expects an object, we pass it correctly
-      await loginUser(email, password);
+      // Note: loginUser expects an object with email and password
+      await loginUser({ email, password });
       toast.success("Logged in successfully!");
       navigate("/warehouse"); 
     } catch (err) {
-      toast.error("Invalid credentials");
+      toast.error("Invalid credentials. Make sure you are an admin/merchant.");
     }
   };
 
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", background: "#f8fafc" }}>
-      <form 
-        onSubmit={handleLogin} 
-        style={{ background: "#ffffff", padding: "40px", borderRadius: "12px", boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)", width: "100%", maxWidth: "400px" }}
-      >
-        <h2 style={{ marginBottom: "24px", textAlign: "center", color: "#0f172a", fontSize: "24px", fontWeight: "800" }}>
-          Logistics Login
-        </h2>
+      <form onSubmit={handleLogin} style={{ background: "#ffffff", padding: "40px", borderRadius: "12px", boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)", width: "100%", maxWidth: "400px" }}>
+        
+        <h2 style={{ textAlign: "center", marginBottom: "24px", fontSize: "24px", color: "#0f172a", fontWeight: "800" }}>Logistics Login</h2>
         
         <div style={{ marginBottom: "16px" }}>
           <label style={{ display: "block", fontSize: "13px", fontWeight: "700", color: "#475569", marginBottom: "6px" }}>Email Address</label>
           <input 
             type="email" required 
             value={email} onChange={(e) => setEmail(e.target.value)} 
-            placeholder="admin@jcs.com"
-            style={{ 
-              width: "100%", padding: "12px", borderRadius: "8px", border: "1px solid #cbd5e1", 
-              backgroundColor: "#ffffff", /* Forces white */
-              color: "#0f172a",            /* Forces dark text */
-              fontSize: "15px", outline: "none"
-            }} 
+            placeholder="merchant@jcs.com"
+            style={{ width: "100%", padding: "12px", borderRadius: "8px", border: "1px solid #cbd5e1", backgroundColor: "#ffffff", color: "#0f172a", fontSize: "15px", outline: "none" }} 
           />
         </div>
         
@@ -51,12 +42,7 @@ export default function Login() {
             type="password" required 
             value={password} onChange={(e) => setPassword(e.target.value)} 
             placeholder="••••••••"
-            style={{ 
-              width: "100%", padding: "12px", borderRadius: "8px", border: "1px solid #cbd5e1", 
-              backgroundColor: "#ffffff", /* Forces white */
-              color: "#0f172a",            /* Forces dark text */
-              fontSize: "15px", outline: "none"
-            }} 
+            style={{ width: "100%", padding: "12px", borderRadius: "8px", border: "1px solid #cbd5e1", backgroundColor: "#ffffff", color: "#0f172a", fontSize: "15px", outline: "none" }} 
           />
         </div>
 
