@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { loginUser } from "./api"; 
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // Note: loginUser expects an object with email and password
       await loginUser({ email, password });
       toast.success("Logged in successfully!");
-      navigate("/warehouse"); 
+      
+      // Force redirect to warehouse after a tiny delay
+      setTimeout(() => {
+        window.location.href = "/warehouse";
+      }, 300);
+      
     } catch (err) {
       toast.error("Invalid credentials. Make sure you are an admin/merchant.");
     }

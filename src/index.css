@@ -1,16 +1,11 @@
-/* =========================================
-   GLOBAL RESET (No Dark Mode)
-========================================= */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #f8fafc; /* Force light background */
+  background-color: #f8fafc;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: #0f172a;
 }
@@ -20,19 +15,12 @@ html, body {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  text-align: left; /* Remove the center alignment */
+  text-align: left;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-}
-
-/* =========================================
-   FORCE INPUTS TO BE WHITE
-========================================= */
 input, select, textarea {
   background-color: #ffffff !important;
   color: #0f172a !important;

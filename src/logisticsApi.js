@@ -5,6 +5,7 @@ export const fetchAllOrders = async () => {
     const response = await api.get("/orders/all"); 
     return response.data?.orders || response.data?.data || response.data || [];
   } catch (err) {
+    console.error("Error fetching orders:", err);
     return [];
   }
 };
@@ -12,24 +13,23 @@ export const fetchAllOrders = async () => {
 export const fetchAllProducts = async () => {
   try {
     const response = await api.get("/products");
-    return response.data?.products || response.data?.data || response.data || [];
+    const data = response.data?.products || response.data?.data || response.data;
+    return Array.isArray(data) ? data : [];
   } catch (err) {
+    console.error("Error fetching products:", err);
     return [];
   }
 };
 
-// UPDATED: Tries the working endpoint first to prevent 404 console errors
 export const fetchAllUsers = async () => {
-  // Try the known working route first
   try {
     const response = await api.get("/admin/users");
     const data = response.data?.users || response.data?.data || response.data;
     if (Array.isArray(data) && data.length > 0) return data;
   } catch (err) {
-    // If admin route fails, silently fall back
+    // Ignore error and try fallback
   }
 
-  // Fallback to standard route
   try {
     const response = await api.get("/users");
     const data = response.data?.users || response.data?.data || response.data;
